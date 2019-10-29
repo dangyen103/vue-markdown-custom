@@ -41,7 +41,7 @@
     "github-markdown-css": "^3.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "katex": "^0.9.0-alpha1",
+    "katex": "^0.11.1",
     "keycode": "^2.2.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",

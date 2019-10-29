@@ -1,14 +1,26 @@
-import hljsLangs from '../core/hljs/lang.hljs.js'
-import { loadScript } from '../core/extra-function.js'
+var hljs = require('highlight.js');
+import hljsLangs from '../core/hljs/lang.hljs.js';
+import { loadScript } from '../core/extra-function.js';
 
 var markdown_config = {
     html: true,        // Enable HTML tags in source
     xhtmlOut: true,        // Use '/' to close single tags (<br />).
     breaks: true,        // Convert '\n' in paragraphs into <br>
-    langPrefix: 'lang-',  // CSS language prefix for fenced blocks. Can be
+    langPrefix: 'lang-',  // CSS language prefix for fenced blocks. Can be useful for external highlighters.
     linkify: true,        // Automatically identify url
     typographer: true,
-    quotes: '“”‘’'
+    quotes: '“”‘’',
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return '<pre class="hljs"><code>' +
+                  hljs.highlight(lang, str, true).value +
+                  '</code></pre>';
+            } catch (__) {};
+        }
+
+        return '<pre class="hljs"><code>' + markdown.utils.escapeHtml(str) + '</code></pre>';
+    }
 };
 
 var markdown = require('markdown-it')(markdown_config);

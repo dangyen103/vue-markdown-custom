@@ -34,23 +34,23 @@ var markdown = require('markdown-it')(markdown_config);
 // 表情
 var emoji = require('markdown-it-emoji');
 // 下标
-var sub = require('markdown-it-sub')
+var sub = require('markdown-it-sub');
 // 上标
-var sup = require('markdown-it-sup')
+var sup = require('markdown-it-sup');
 // <dl/>
-var deflist = require('markdown-it-deflist')
+var deflist = require('markdown-it-deflist');
 // <abbr/>
-var abbr = require('markdown-it-abbr')
+var abbr = require('markdown-it-abbr');
 // footnote
-var footnote = require('markdown-it-footnote')
+var footnote = require('markdown-it-footnote');
 // insert 带有下划线 样式 ++ ++
-var insert = require('markdown-it-ins')
+var insert = require('markdown-it-ins');
 // mark
-var mark = require('markdown-it-mark')
+var mark = require('markdown-it-mark');
 // taskLists
-var taskLists = require('markdown-it-task-lists')
+var taskLists = require('markdown-it-task-lists');
 //
-var container = require('markdown-it-container')
+var container = require('markdown-it-container');
 // add target="_blank" to all link
 var defaultRender = markdown.renderer.rules.link_open || function(tokens, idx, options, env, self) {
     return self.renderToken(tokens, idx, options);
@@ -86,5 +86,5 @@ markdown.use(emoji)
     .use(mark)
     .use(container)
     .use(miip)
-    .use(katex)
+    .use(katex);
 export default markdown
