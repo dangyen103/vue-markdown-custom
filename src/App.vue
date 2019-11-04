@@ -111,26 +111,6 @@
         editable: true,
         toolbarsFlag: true,
         img_file: {},
-        external_link: {
-          markdown_css: function() {
-            return '/markdown/github-markdown.min.css';
-          },
-          hljs_js: function() {
-            return '/highlightjs/highlight.min.js';
-          },
-          hljs_css: function(css) {
-            return '/highlightjs/styles/' + css + '.min.css';
-          },
-          hljs_lang: function(lang) {
-            return '/highlightjs/languages/' + lang + '.min.js';
-          },
-          katex_css: function() {
-            return '/katex/katex.min.css';
-          },
-          katex_js: function() {
-            return '/katex/katex.min.js';
-          }
-        },
         toolbar_settings: {
           undo: true, // 上一步
           redo: true, // 下一步
@@ -170,7 +150,7 @@
     created () {
       var $vm = this;
       this.initLanguage();
-      this.sizeToStatus()
+      this.sizeToStatus();
       window.addEventListener('resize', function() {
         // 媒介查询
         $vm.sizeToStatus()
@@ -194,17 +174,17 @@
         this.$refs.md.$emptyHistory()
       },
       $click(val) {
-        console.log(val);
+        //console.log(val);
       },
       imgreplace($e) {
-        console.log('here');
+        //console.log('here');
         this.$refs.md.$imglst2Url([
           [0, 'https://raw.githubusercontent.com/hinesboy/mavonEditor/master/img/cn/cn-common.png'],
           [1, 'https://raw.githubusercontent.com/hinesboy/mavonEditor/master/img/cn/cn-common.png']
         ]);
       },
       uploadimg($e) {
-        console.log(this.img_file);
+        //console.log(this.img_file);
         for (var _img in this.img_file) {
           this.$refs.md.$img2Url(_img, 'https://raw.githubusercontent.com/hinesboy/mavonEditor/master/img/cn/cn-common.png')
         }
@@ -223,7 +203,7 @@
         }) */
       },
       $imgAdd(pos, $file) {
-        console.log('imgAdd', pos, $file);
+        //console.log('imgAdd', pos, $file);
         this.img_file[pos] = $file;
         // console.log(this.$refs.md.$refs.toolbar_left.$imgDelByFilename(pos));
         // console.log(this.$refs.md.$refs.toolbar_left.$imgAddByFilename('./test', $file))
@@ -233,7 +213,7 @@
         // this.$refs.md.$imgUpdateByUrl(pos, 'http://pic.58pic.com/58pic/13/46/50/61758PICWZY_1024.jpg');
       },
       $imgDel(pos) {
-        console.log('imgDel', pos);
+        //console.log('imgDel', pos);
         delete this.img_file[pos];
       },
       sizeToStatus () {
@@ -252,7 +232,7 @@
         alert('save two')
       },
       change (val, render) {
-        console.log(val)
+        //console.log(val)
       },
       opchange (event) {
         this.d_language = event.target.value;
@@ -263,10 +243,10 @@
         this.help2 = CONFIG[`help_${this.d_language}`]
       },
       $subfieldtoggle(flag , value) {
-        console.log('sufield toggle' + flag)
+        //console.log('sufield toggle' + flag)
       },
       $previewtoggle(flag , value) {
-        console.log('preview toggle' + flag)
+        //console.log('preview toggle' + flag)
       },
       imgdelete() {
         var md = this.$refs.md;
