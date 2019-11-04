@@ -92,6 +92,7 @@
 import AutoTextarea from '../../dependencies/auto-textarea';
 import {keydownListen} from '../../lib/core/keydown-listen.js';
 import hljsCss from '../../lib/core/hljs/lang.hljs.css.js';
+// eslint-disable-next-line no-unused-vars
 import hljsLangs from '@/lib/core/hljs/lang.hljs.js';
 import {
     fullscreenchange,
@@ -109,10 +110,12 @@ import {
     loadScript,
     ImagePreviewListener
 } from '../../lib/core/extra-function.js';
+// eslint-disable-next-line no-unused-vars
 import {p_ObjectCopy_DEEP, stopEvent} from '../../lib/util.js';
 import {toolbar_left_click, toolbar_left_addlink} from '../../lib/toolbar_left_click.js';
 import {toolbar_right_click} from '../../lib/toolbar_right_click.js';
 import {CONFIG} from '../../lib/config.js';
+// eslint-disable-next-line no-unused-vars
 import hljs from '@/lib/core/highlight.js';
 import markdown from '../../lib/mixins/markdown.js';
 
@@ -362,6 +365,7 @@ export default {
         loadExternalLink(name, type, callback) {
             if (typeof this.p_external_link[name] !== 'function') {
                 if (this.p_external_link[name] !== false) {
+                    // eslint-disable-next-line no-console
                     console.error('external_link.' + name, 'is not a function, if you want to disabled this error log, set external_link.' + name, 'to function or false');
                 }
                 return;
@@ -425,8 +429,8 @@ export default {
                 }
             }
         },
-        $imgTouch(file) {
-            var $vm = this;
+        $imgTouch() {
+            // file is a param
             // TODO Jump to image location
         },
         $imgDel(file) {
@@ -452,6 +456,7 @@ export default {
                 $file.miniurl = oFREvent.target.result;
                 if (isinsert === true) {
                     // Remove special characters
+                    // eslint-disable-next-line no-useless-escape
                     $file._name = $file.name.replace(/[\[\]\(\)\+\{\}&\|\\\*^%$#@\-]/g, '');
 
                     $vm.insertText($vm.getTextareaDom(),
@@ -488,6 +493,7 @@ export default {
         },
         $img2Url(fileIndex, url) {
             // x.replace(/(\[[^\[]*?\](?=\())\(\s*(\.\/2)\s*\)/g, "$1(http://path/to/png.png)")
+            // eslint-disable-next-line no-useless-escape
             var reg_str = "/(!\\[\[^\\[\]*?\\]\(?=\\(\)\)\\(\\s*\(" + fileIndex + "\)\\s*\\)/g";
             var reg = eval(reg_str);
             this.d_value = this.d_value.replace(reg, "$1(" + url + ")");
@@ -602,7 +608,7 @@ export default {
             var $vm = this;
             $vm.$render(CONFIG[`help_${lang}`], function(res) {
                 $vm.d_help = res;
-            })
+            });
             this.d_words = CONFIG[`words_${lang}`];
         },
         // Edit switch
@@ -617,18 +623,22 @@ export default {
         codeStyleChange(val, isInit) {
             isInit = isInit ? isInit : false;
             if (typeof this.p_external_link.hljs_css !== 'function') {
-                if (this.p_external_link.hljs_css !== false)
-                { console.error('external_link.hljs_css is not a function, if you want to disabled this error log, set external_link.hljs_css to function or false'); }
+                if (this.p_external_link.hljs_css !== false) {
+                    // eslint-disable-next-line no-console
+                    console.error('external_link.hljs_css is not a function, if you want to disabled this error log, set external_link.hljs_css to function or false');
+                }
                 return;
             }
             var url = this.p_external_link.hljs_css(val);
             if (url.length === 0 && isInit) {
+                // eslint-disable-next-line no-console
                 console.warn('hljs color scheme', val, 'do not exist, loading default github');
                 url = this.p_external_link.hljs_css('github')
             }
             if (url.length > 0) {
                 loadLink(url)
             } else {
+                // eslint-disable-next-line no-console
                 console.warn('hljs color scheme', val, 'do not exist, hljs color scheme will not change');
             }
         },
@@ -661,15 +671,15 @@ export default {
         }
     },
     watch: {
-        d_value: function (val, oldVal) {
+        d_value: function () {
             this.iRender();
         },
-        value: function (val, oldVal) {
+        value: function (val) {
             if (val !== this.d_value) {
                 this.d_value = val;
             }
         },
-        subfield: function (val, oldVal) {
+        subfield: function (val) {
             this.s_subfield = val;
         },
         d_history_index() {
@@ -679,7 +689,7 @@ export default {
             }
             this.d_value = this.d_history[this.d_history_index];
         },
-        language: function (val) {
+        language: function () {
             this.initLanguage();
         },
         editable: function () {
