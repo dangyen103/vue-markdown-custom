@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MavonEditor from "../views/mavon-editor";
+import MavonEditor from '@/components/MarkdownEditor';
 
 export default {
   components: {

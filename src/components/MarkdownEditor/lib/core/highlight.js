@@ -17,11 +17,13 @@ function highLightCode(str, callback, hljsLangFuc, hljsFuc) {
     var hljs = window.hljs;
     if (!hljs) {
         if (typeof hljsFuc !== 'function') {
+            // eslint-disable-next-line no-console
             console.warn('external_link.hljs_js is not a function, hljs can not load by mavon-editor, if you want to disabled this log, set external_link.hljs_js to function');
             callback(str);
             return;
         }
         var url = hljsFuc();
+        // eslint-disable-next-line no-console
         console.warn('hljs parsing file is missing. mavon-editor will autoload', url);
         loadScript(url, function() {
             _highLightCode(str, callback, hljsLangFuc);
@@ -30,6 +32,7 @@ function highLightCode(str, callback, hljsLangFuc, hljsFuc) {
         if (typeof hljsLangFuc === 'function') {
             _highLightCode(str, callback, hljsLangFuc);
         } else {
+            // eslint-disable-next-line no-console
             console.warn('external_link.hljs_lang is not a function, hljs will not to work');
             callback(str);
         }
@@ -41,6 +44,7 @@ function _highLightCode(str, callback, hljsLangFuc) {
     dom.innerHTML = str;
     var pre_code = dom.querySelectorAll('pre > div.hljs > code');
     if (pre_code && hljs && (typeof hljsLangFuc === 'function')) {
+        // eslint-disable-next-line no-unused-vars
         var flag = 0;
         var i = 0;
         var deal = 0;

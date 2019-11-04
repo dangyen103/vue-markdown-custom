@@ -93,7 +93,7 @@ import AutoTextarea from './dependencies/auto-textarea';
 import {keydownListen} from './lib/core/keydown-listen.js';
 import hljsCss from './lib/core/hljs/lang.hljs.css.js';
 // eslint-disable-next-line no-unused-vars
-import hljsLangs from '@/lib/core/hljs/lang.hljs.js';
+import hljsLangs from './lib/core/hljs/lang.hljs.js';
 import {
     fullscreenchange,
    /* windowResize, */
@@ -116,7 +116,7 @@ import {toolbar_left_click, toolbar_left_addlink} from './lib/toolbar_left_click
 import {toolbar_right_click} from './lib/toolbar_right_click.js';
 import {CONFIG} from './lib/config.js';
 // eslint-disable-next-line no-unused-vars
-import hljs from '@/lib/core/highlight.js';
+import hljs from './lib/core/highlight.js';
 import markdown from './lib/mixins/markdown.js';
 
 import md_toolbar_left from './components/ToolbarLeft'
@@ -710,14 +710,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../lib/css/mavon-editor.scss";
-@import '../../lib/css/md.scss';
-@import "../../lib/css/markdown.scss";
+@import "./lib/css/mavon-editor.scss";
+@import './lib/css/md.scss';
+@import "./lib/css/markdown.scss";
 </style>
 
 <style lang="css">
-@import "../../lib/font/css/fontello.css";
-.auto-textarea-wrapper {
-  height: 100%;
-}
+@import "./lib/font/css/fontello.css";
 </style>

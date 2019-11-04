@@ -79,9 +79,9 @@
 
 <script type="text/ecmascript-6">
   // import {CONFIG} from './assets/config.js'
-  import {CONFIG} from '@/lib/config.js'
+  import {CONFIG} from '@/components/MarkdownEditor/lib/config.js'
   import axios from 'axios'
-  import MavonEditor from '@/views/mavon-editor';
+  import MavonEditor from '@/components/MarkdownEditor';
   export default {
     name: 'app',
     components: {
