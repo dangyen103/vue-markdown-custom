@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "highlight.js": "^9.15.10",
+    "highlight.js": "^10.4.1",
     "highlight.js-async-webpack": "^1.0.4",
     "vue": "^2.6.10"
   },
